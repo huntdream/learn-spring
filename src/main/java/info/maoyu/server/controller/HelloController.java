@@ -1,5 +1,6 @@
-package info.maoyu.server;
+package info.maoyu.server.controller;
 
+import info.maoyu.server.Hello;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
