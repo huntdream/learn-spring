@@ -1,9 +1,8 @@
 package info.maoyu.server.model;
 
-import org.springframework.stereotype.Repository;
+import org.apache.ibatis.type.Alias;
 
 import java.util.Date;
-
 
 public class User  {
     private int id;

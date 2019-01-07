@@ -1,8 +1,10 @@
 package info.maoyu.server.controller;
 
+import info.maoyu.server.dao.UserMapper;
 import info.maoyu.server.model.User;
-import info.maoyu.server.mapper.UserMapper;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/user")
@@ -14,13 +16,7 @@ public class UserController {
     }
 
     @GetMapping("/all")
-    public User selectByUserId() {
-        return this.userMapper.selectById(1);
-    }
-
-    @GetMapping("/update")
-    public User updatePassword(@RequestParam(value = "password") String password) {
-        this.userMapper.updatePassword(password);
-        return this.userMapper.selectById(1);
+    public List<User> getAllUser() {
+        return this.userMapper.findAll();
     }
 }
