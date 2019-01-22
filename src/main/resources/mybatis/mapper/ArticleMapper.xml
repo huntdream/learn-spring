@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="info.maoyu.server.dao.ArticleMapper">
+    <!--Find All articles-->
+    <resultMap id="article" type="Article">
+        <id property="id" column="id"/>
+        <result column="name" property="name"/>
+    </resultMap>
+
+    <select id="findAllArticle" resultMap="article">
+        select *
+        from article
+        limit 20
+    </select>
+
+    <select id="findArticleById" resultMap="article">
+        select *
+        from article
+        where id = #{id}
+    </select>
+
+
+    <select id="findArticleByTitle" resultMap="article">
+        select *
+        from article
+        where title like concat(concat('%', #{title}), '%')
+    </select>
+
+    <select id="findArticleByAuthor" resultMap="article">
+        select *
+        from article
+        where author = #{author}
+    </select>
+
+</mapper>
