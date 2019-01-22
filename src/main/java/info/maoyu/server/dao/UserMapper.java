@@ -9,5 +9,11 @@ import java.util.List;
 @Mapper
 @Service
 public interface UserMapper {
-    List<User> findAll();
+    List<User> findAllUser();
+
+    User findUserById(int id);
+
+    User findUserByName(String name);
+
+    void updatePassword(String password, int id);
 }

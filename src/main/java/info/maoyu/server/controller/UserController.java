@@ -5,6 +5,8 @@ import info.maoyu.server.model.User;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 @RestController
 @RequestMapping("/user")
@@ -16,7 +18,30 @@ public class UserController {
     }
 
     @GetMapping("/all")
-    public List<User> getAllUser() {
-        return this.userMapper.findAll();
+    @ResponseBody
+    public List<User> findAllUser() {
+        return this.userMapper.findAllUser();
+    }
+
+    @RequestMapping(value = "",params = "id",method = RequestMethod.GET)
+    @ResponseBody
+    public Object findUserById(@RequestParam("id") int id){
+        User user = this.userMapper.findUserById(id);
+        return Objects.requireNonNullElse(user, "Did not find any matched user");
+    }
+
+    @RequestMapping(value = "",params = "name",method = RequestMethod.GET)
+    @ResponseBody
+    public Object findUserByName(@RequestParam("name") String name) {
+        System.out.println(name);
+        User user = this.userMapper.findUserByName(name);
+        return Objects.requireNonNullElse(user, "Did not find any matched user");
+    }
+
+    @RequestMapping(value = "/update/password", method = RequestMethod.POST)
+    public User updatePassword(@RequestBody Map<String,Object> payload) {
+        String password = payload.get("password").toString();
+        this.userMapper.updatePassword(password, 1);
+        return this.userMapper.findUserById(1);
     }
 }

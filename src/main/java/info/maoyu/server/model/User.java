@@ -1,7 +1,5 @@
 package info.maoyu.server.model;
 
-import org.apache.ibatis.type.Alias;
-
 import java.util.Date;
 
 public class User  {
