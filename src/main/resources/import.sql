@@ -1,5 +1,7 @@
 create database if not exists server;
 
+use server;
+
 # create table user
 create table if not exists user
 (
