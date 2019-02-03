@@ -16,4 +16,8 @@ public interface ArticleMapper {
     List<Article> findArticleByAuthor(String name);
 
     Article findArticleById(int id);
+
+    Article findArticleBySuffixCode(String suffixCode);
+
+    void saveArticle(Article article);
 }
