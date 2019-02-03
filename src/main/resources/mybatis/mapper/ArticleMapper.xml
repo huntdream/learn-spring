@@ -5,6 +5,7 @@
     <resultMap id="article" type="Article">
         <id property="id" column="id"/>
         <result column="name" property="name"/>
+        <result column="suffix_code" property="suffixCode"/>
     </resultMap>
 
     <select id="findAllArticle" resultMap="article">
@@ -32,4 +33,15 @@
         where author = #{author}
     </select>
 
+    <select id="findArticleBySuffixCode" resultMap="article">
+        select *
+        from article
+        where suffix_code = #{suffixCode}
+    </select>
+
+    <insert id="saveArticle">
+        insert into
+        article(title,author,content,category)
+        values (#{title},#{author},#{content},#{category})
+    </insert>
 </mapper>
