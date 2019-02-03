@@ -1,11 +1,18 @@
 package info.maoyu.server.model;
 
+import javax.validation.constraints.NotEmpty;
 import java.util.Date;
 
-public class User  {
+public class User {
     private int id;
+
+    @NotEmpty
     private String username;
+
+    @NotEmpty
     private String name;
+
+    @NotEmpty
     private String password;
     private Date created_at;
 
@@ -21,8 +28,12 @@ public class User  {
         return this.name;
     }
 
-    public Date getCreatedAt(){
+    public Date getCreatedAt() {
         return this.created_at;
+    }
+
+    public String getPassword() {
+        return this.password;
     }
 
     public void setUsername(String username) {
@@ -33,7 +44,7 @@ public class User  {
         this.name = name;
     }
 
-    public void setPassword(String password){
+    public void setPassword(String password) {
         this.password = password;
     }
 }
