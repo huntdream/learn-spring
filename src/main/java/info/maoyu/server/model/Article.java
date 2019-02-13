@@ -9,7 +9,7 @@ public class Article {
     @NotEmpty(message = "Title is required")
     private String title;
 
-    private Date created_at;
+    private Date createdAt;
     private Date modified_at;
     private String author;
 
@@ -41,6 +41,10 @@ public class Article {
 
     public String getSuffixCode() {
         return this.suffixCode;
+    }
+
+    public Date getCreatedAt() {
+        return this.createdAt;
     }
 
     public void setTitle(String title) {
