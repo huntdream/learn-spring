@@ -6,11 +6,13 @@
         <id property="id" column="id"/>
         <result column="name" property="name"/>
         <result column="suffix_code" property="suffixCode"/>
+        <result column="created_at" property="createdAt" />
     </resultMap>
 
     <select id="findAllArticle" resultMap="article">
         select *
         from article
+        order by created_at desc 
         limit 20
     </select>
 
@@ -40,8 +42,7 @@
     </select>
 
     <insert id="saveArticle">
-        insert into
-        article(title,author,content,category)
-        values (#{title},#{author},#{content},#{category})
+        insert into article (title, author, content, category)
+        values (#{title}, #{author}, #{content}, #{category})
     </insert>
 </mapper>

@@ -30,9 +30,14 @@
         where name like concat(concat('%', #{name}), '%')
     </select>
 
+    <select id="saveUser" resultMap="user">
+        insert into user (username, name, password)
+        values (#{username}, #{name}, #{password})
+    </select>
+
     <update id="updatePassword">
         update user
-        set password=#{password}
+        set password = #{password}
         where id = #{id}
     </update>
 </mapper>
