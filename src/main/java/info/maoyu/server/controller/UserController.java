@@ -4,6 +4,7 @@ import info.maoyu.server.dao.UserMapper;
 import info.maoyu.server.model.User;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Objects;
 
@@ -35,6 +36,11 @@ public class UserController {
         System.out.println(name);
         User user = this.userMapper.findUserByName(name);
         return Objects.requireNonNullElse(user, "Did not find any matched user");
+    }
+
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public void saveUser(@Valid @RequestBody User user) {
+        this.userMapper.saveUser(user);
     }
 
     @RequestMapping(value = "/update/password", method = RequestMethod.POST)
